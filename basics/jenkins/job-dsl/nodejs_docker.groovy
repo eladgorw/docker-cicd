@@ -8,18 +8,18 @@ job('NodeJS Docker example') {
     triggers {
         scm('H/5 * * * *')
     }
-    wrappers {
-        nodejs('nodejs-new') 
-    }
+//    wrappers {
+//        nodejs('nodejs-new') 
+//    }
     steps {
         dockerBuildAndPublish {
-            repositoryName('aaaaaaaaa/docker-nodejs-demo')
+            repositoryName('eladgorw/docker-nodejs-demo')
             tag('${GIT_REVISION,length=9}')
-            registryCredentials('dockerhub')
+            registryCredentials('eladgorw-dockerhub-cred')
             forcePull(false)
             forceTag(false)
             createFingerprints(false)
             skipDecorate()
         }
-    }
+   }
 }
